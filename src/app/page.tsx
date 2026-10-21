@@ -2,6 +2,8 @@ import { ButtonMark } from "@/components/button-mark";
 import { CeremonyPlanner } from "@/components/ceremony-planner";
 import { CoatStudio } from "@/components/coat-studio";
 import { QuoteForm } from "@/components/quote-form";
+import { DesignStudio } from "@/components/studio/design-studio";
+import { StudioProvider } from "@/components/studio/studio-context";
 import {
   audiences,
   business,
@@ -36,6 +38,7 @@ export default function Home() {
       </header>
 
       <main id="main-content">
+        <StudioProvider>
         <section className="hero" id="top">
           <div className="container hero-grid">
             <div className="hero-copy">
@@ -61,10 +64,10 @@ export default function Home() {
                   Plan a white coat ceremony
                 </a>
               </div>
-              <p className="hero-hint mono">
-                <span aria-hidden="true">→</span> Try it: type a name into the
-                coat
-              </p>
+              <a className="hero-hint mono" href="#studio">
+                <span aria-hidden="true">→</span> Have a logo? See it on a coat
+                in the design studio
+              </a>
             </div>
             <CoatStudio />
           </div>
@@ -165,10 +168,31 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="section studio-section" id="studio">
+          <div className="container">
+            <div className="section-head section-head-split">
+              <div>
+                <p className="eyebrow mono">03 · Design studio</p>
+                <h2>
+                  See your logo
+                  <br />
+                  <em>before it&rsquo;s sewn.</em>
+                </h2>
+              </div>
+              <p>
+                Upload your practice, hospital or program logo, size it in real
+                inches, add names and thread colors, then send the proof with
+                your quote. It&rsquo;s the same spec our digitizers work from.
+              </p>
+            </div>
+            <DesignStudio />
+          </div>
+        </section>
+
         <section className="section" id="process">
           <div className="container">
             <div className="section-head">
-              <p className="eyebrow mono">03 · How an order runs</p>
+              <p className="eyebrow mono">04 · How an order runs</p>
               <h2>
                 From roster
                 <br />
@@ -194,7 +218,7 @@ export default function Home() {
         <section className="section section-ink" id="ceremonies">
           <div className="container ceremony-grid">
             <div>
-              <p className="eyebrow mono">04 · White coat ceremonies</p>
+              <p className="eyebrow mono">05 · White coat ceremonies</p>
               <h2>
                 The first coat
                 <br />
@@ -219,7 +243,7 @@ export default function Home() {
           <div className="container">
             <div className="section-head section-head-split">
               <div>
-                <p className="eyebrow mono">05 · Ongoing programs</p>
+                <p className="eyebrow mono">06 · Ongoing programs</p>
                 <h2>
                   Set it up once.
                   <br />
@@ -248,7 +272,7 @@ export default function Home() {
         <section className="section quote" id="quote">
           <div className="container quote-grid">
             <div>
-              <p className="eyebrow mono">06 · Request a quote</p>
+              <p className="eyebrow mono">07 · Request a quote</p>
               <h2>
                 Tell us who
                 <br />
@@ -263,6 +287,7 @@ export default function Home() {
             <QuoteForm />
           </div>
         </section>
+        </StudioProvider>
       </main>
 
       <footer className="site-footer">

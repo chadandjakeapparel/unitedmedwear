@@ -12,6 +12,7 @@ export const business = {
 export const navLinks = [
   { href: "#outfit", label: "Who we outfit" },
   { href: "#line", label: "The line" },
+  { href: "#studio", label: "Design studio" },
   { href: "#process", label: "Process" },
   { href: "#ceremonies", label: "Ceremonies" },
 ];
@@ -163,6 +164,8 @@ export const threadColors = [
   { name: "Royal", value: "#2851a3" },
   { name: "Black", value: "#16181c" },
   { name: "Silver", value: "#7e858f" },
+  { name: "White", value: "#f7f6f2" },
+  { name: "Gold", value: "#b8913a" },
 ];
 
 export const organizationTypes = [
