@@ -7,10 +7,12 @@ import {
   quantityRanges,
   quoteItems,
 } from "@/content/site";
+import { useStudioDesign } from "@/components/studio/studio-context";
 
 // There is no backend yet: the form composes an email to the quote inbox.
 export function QuoteForm() {
   const [sent, setSent] = useState(false);
+  const { design, setDesign } = useStudioDesign();
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -28,6 +30,14 @@ export function QuoteForm() {
       `Needed by: ${data.get("needed") || "Flexible"}`,
       "",
       String(data.get("notes") || ""),
+      ...(design
+        ? [
+            "",
+            "Design from the studio:",
+            design.summary,
+            ...(design.hasLogo ? ["", "(Logo file attached to this email.)"] : []),
+          ]
+        : []),
     ].join("\n");
 
     const subject = `Quote request: ${organization}`;
@@ -104,6 +114,25 @@ export function QuoteForm() {
           />
         </label>
       </div>
+
+      {design ? (
+        <div className="quote-design">
+          <div className="quote-design-head">
+            <span className="mono">Design from the studio</span>
+            <button className="text-button" onClick={() => setDesign(null)} type="button">
+              Remove
+            </button>
+          </div>
+          <pre className="mono">{design.summary}</pre>
+          {design.hasLogo ? (
+            <p>
+              Your email app can&rsquo;t attach the logo automatically. Please
+              attach the original file, ideally a vector (SVG, AI, EPS or PDF),
+              to the email before sending.
+            </p>
+          ) : null}
+        </div>
+      ) : null}
 
       <div className="form-submit">
         <button className="button button-primary" type="submit">

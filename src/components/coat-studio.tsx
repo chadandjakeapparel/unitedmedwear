@@ -1,7 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { threadColors } from "@/content/site";
+import { threadColors as allThreadColors } from "@/content/site";
+
+// White thread disappears on a white coat, so the hero preview leaves it out.
+const threadColors = allThreadColors.filter((color) => color.name !== "White");
 
 type LetterStyle = "script" | "block";
 
